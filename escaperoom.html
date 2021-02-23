@@ -1,60 +1,120 @@
-<!DOCTYPE html>
-<html> 
-<head>
-    <meta charset="utf-8">
-    <title>Escaperoom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-</head>
- 
-<style>
-    body{
-        background-color: #595C61;
-        font-family: serif;
-        margin:0;
-        color: #E4E4E4;
-    }
-    h1{
-        font-size:40px;
-        text-align:center;
-    }
-    h2{
-        text-align:center;
-        font-size:22px;
-        font-family:cursive;
-    }
-    #pagina{
-        border:2px solid #E4E4E4;
-        margin:50px 10px 0px 10px;
-        border-radius:7px;
-    }
-    h3{
-        text-align:center;
-        font-size: 40px;
-        margin:20px;
-    }
-    p{
-        padding:0px 20px 0px 20px;
-    }
-    a{
-        color:#E4E4E4;
-        text-decoration:underline;
-    }
-    a:hover{
-        color:blue;
-    }
-    a:active{
-        color:red;
-    }
-</style>
-<body>
-    <h1>Welkom bij onze escape room</h1>
-    <h2>Liene, Sitha, Viktor</h2>
-    <div id="pagina">
-        <h3>Inleiding</h3>
-        <p> Een spion is ontmaskerd tijdens het infiltreren van één van de grootste maffiabendes ooit gekend en daardoor gevangen genomen. Hij probeert nu te ontsnappen aan de hand van zijn detective trucjes. </p>
-        <p><strong>KLIK <a href="https://en.wikipedia.org/wiki/Escape_room" target=_blank>HIER</a> OM OOK ONZE ONLINE ESCAPE UIT TE PROBEREN</strong><em>(enkel mogelijk op een computer)</em></p>
-    </div>
-    
-</body>
-</html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+      <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/ad57b15d/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+        <!--camera-->
+        <a-camera>
+			<a-entity cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1"
+					  geometry="primitive: sphere; radius: 0.015"
+					  material="color: #FF0000; shader: flat; opacity: 0.5">
+					  <a-animation attribute="scale"
+					  			   to="3 3 3"
+					  			   dur="1000"
+					  			   begin="cursor-fusing"
+					  			   fill="backwards"
+					  			   easing="linear">
+					  </a-animation>
+			</a-entity>
+            <a-entity camera look-controls wasd-controls="acceleration: 50" position="0 1.6 0"></a-entity>
+		</a-camera>
+        
+        <!--lucht-->
+        <a-sky src="foto's/lucht.jpg"></a-sky>
+        
+        <!--licht-->
+        <a-light type="ambient" color="#383838"></a-light>
+        
+        <!--muziek-->
+        <a-scene>
+        <a-sound src="src: url(muziek.mp3)" autoplay="true" position="0 2 5"></a-sound>
+        </a-scene>
+        
+        
+        <grid></grid>
+        
+        <!--buitenmuur-->
+        <a-box data-brackets-id="1091" position="2.5 1.75 -9.75" rotation="0 90 0" src="foto's/buitenmuur.jpg" material="" geometry="" scale="0.1 3.5 20" id="Muur1" ></a-box>
+        <a-box data-brackets-id="292" position="2.5 1.5 10.25" rotation="0 90 0" src="foto's/buitenmuur.jpg" material="" geometry="" scale="0.1 3 20" id="Muur2"></a-box>
+        <a-box data-brackets-id="296" position="12.5 1.5 0.25" rotation="" src="foto's/buitenmuur.jpg" material="" geometry="" scale="0.1 3 20" id="Muur3"></a-box>
+        <a-box data-brackets-id="323" position="-7.5 1.5 0.25" rotation="" src="foto's/buitenmuur.jpg" material="" geometry="" scale="0.1 3 20" id="Muur4"></a-box>
+        <!--grond-->
+        <a-plane data-brackets-id="367" position="2.55942 0.015 0.23124" rotation="-90 0 0" width="4" height="4" src="foto's/grond.jpg" material="" geometry="" scale="5 5 1" id="grond"></a-plane>
+        <!--gevaarbord-->
+        <a-image data-brackets-id="619" src="foto's/gevaarbord.png" position="0 1.2 10.197" geometry="" id="gevaarbord" material="" scale="2 2 2"></a-image>
+        <!--binnemuur-->
+        <a-box data-brackets-id="648" position="-2.5 1.75 -4.75" rotation="" src="foto's/binnenmuur.jpg" material="" geometry="" scale="0.1 3.5 10" id="binnenmuur1"></a-box>
+        <a-box data-brackets-id="667" position="7.47061 1.75 -4.75" rotation="" src="foto's/binnenmuur.jpg" material="" geometry="" scale="0.1 3.5 10" id="binnenmuur2"></a-box>
+        <a-box data-brackets-id="684" position="3.51603 1.75 0.25" rotation="0 90 0" src="foto's/binnenmuur.jpg" material="" geometry="" scale="0.1 3.5 8" id="binnenmuur3"></a-box>
+        
+        <a-box data-brackets-id="724" position="-2.25926 1.75 -0.76313" rotation="0 -10 0" src="foto's/deur.png" material="" geometry="" scale="0.05 3.5 2" id="deur"></a-box>
+        
+        
+        <!--dak-->
+        <a-box data-brackets-id="22" position="6.25 4.75 -4.7" rotation="0 0 45" src="foto's/dakpan.jpg" material="" geometry="" scale="0.1 5 10" id="dak"></a-box>
+        <a-box data-brackets-id="22" position="-1.33853 4.75 -4.7" rotation="0 0 -45" src="foto's/dakpan.jpg" material="" geometry="" scale="0.1 5 10" id="dak2"></a-box>
+        <a-box data-brackets-id="389" position="2.45 6.5576 -2.2" rotation="0 0 90" src="foto's/dak.jpg" material="" geometry="" scale="0.1 4 5" id="dak 3"></a-box>
+        <a-box data-brackets-id="389" position="2.45 6.5576 -7.19604" rotation="0 0 90" src="foto's/dak.jpg" material="" geometry="" scale="0.1 4 5" id="dak 4"></a-box>
+        
+        <a-triangle color="#CCC" vertex-c="1 -1 0" id="driehoek"></a-triangle>
+        
+        <!--prikkeldraad-->
+        <a-box data-brackets-id="937" position="-7.5 3.75 -4.75" rotation="" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad"></a-box>
+        <a-box data-brackets-id="982" position="-7.5 3.75 5.25" rotation="" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad2"></a-box>
+        <a-box data-brackets-id="1027" position="-2.5 3.75 10.25" rotation="0 90 0" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad3"></a-box>
+        <a-box data-brackets-id="1027" position="7.5 3.75 10.25" rotation="0 90 0" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad4"></a-box>
+        <a-box data-brackets-id="1027" position="12.5 3.75 5.25" rotation="" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad5"></a-box>
+        <a-box data-brackets-id="1080" position="12.5 3.75 -4.75" rotation="" src="foto's/prikkeldraad.jpg" material="transparent: true" geometry="" scale="0.2 1.5 10" id="prikkeldraad6"></a-box>
+        
+        <a-text data-brackets-id="1969" value="Welkom bij onze virtuele escaperoom" position="1 2.3 0.3" text="width: 7; color: blue; side: double"></a-text>
+        
+        <a-image data-brackets-id="2146" src="foto's/keycaps.png" position="3.5 1.25 0.301" geometry="width: 2.5; height: 2.5" id="zqsd" material="" scale="0.5 0.5 1"></a-image>
+        
+        <!--boxlink-->
+        <a-entity id="box met weblink" mixin="col1" geometry="" position="0.5 0.5 0.75" 
+                  material="color:lightblue;shader:flat;side:double;src:foto's/info.gif" 
+                  event-set__enter="[object Object]" event-set__leave="[object Object]" 
+                  onclick="location.href='https://nl.wikipedia.org/wiki/Sneeuwpop'" >
+        </a-entity>
+        <a-text data-brackets-id="1289" value="Verhaallijn" position="0 1.35 0.301" text="width: 7; color: #0bb10b; side: double" scale="0.7 0.7 0.7" id="VERHAAL"></a-text>
+        
+        <!--decoratie-->
+        <a-entity data-brackets-id="1724" id="kapstok" scale="1.7 1.7 1.7" rotation="0 90 0" position="3 0 2.5">
+        <!--kapstok-->
+        <a-cylinder data-brackets-id="1725" position="2.97688 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" material="" geometry="" scale="0.1 1 0.1" id="kapstok1" rotation=""></a-cylinder>
+        <a-cylinder data-brackets-id="1726" position="3.10764 1.21069 -3" radius="0.5" height="1.5" color="#FFC65D" material="" geometry="" scale="0.1 0.2 0.1" id="kapstok2" rotation="0 0 -55"></a-cylinder>
+        <a-cylinder data-brackets-id="1727" position="3.10575 0.71845 -3" radius="0.5" height="1.5" color="#FFC65D" material="" geometry="" scale="0.1 0.2 0.1" id="kapstok3" rotation="0 0 -55"></a-cylinder>
+        <a-cylinder data-brackets-id="1728" position="2.97303 1.12614 -2.86633" radius="0.5" height="1.5" color="#FFC65D" material="" geometry="" scale="0.1 0.2 0.1" id="kapstok4" rotation="55 0 0"></a-cylinder>
+        <a-cylinder data-brackets-id="1729" position="2.84684 0.93717 -3" radius="0.5" height="1.5" color="#FFC65D" material="" geometry="" scale="0.1 0.2 0.1" id="kapstok5" rotation="0 0 55"></a-cylinder>
+        <a-box data-brackets-id="1730" position="2.96745 0.80743 -2.73334" rotation="" color="#4CC3D9" geometry="" scale="0.7 0.85 0.02" id="jas" src="foto's/jas.png" material="color: #FFF; side: double; transparent: true"></a-box>
+        </a-entity>
+        
+        <!--bureau-->
+        <a-entity data-brackets-id="2467" id="bureau" scale="1 2 2.3" rotation="0 90 0" position="6 0 -1.3382">
+        <a-box data-brackets-id="2468" position="-1.06392 0.29606 -1.55" rotation="0 -87.93355169211283 0" color="#4CC3D9" material="color: #412001" geometry="height: 0.66; depth: 0.87; width: 0.16" id="Bureaupoot1"></a-box>
+        <a-box data-brackets-id="2469" position="-1.01025 0.33551 -0.45" rotation="0 -90.59092994592959 0" color="#4CC3D9" material="color: #412001" geometry="height: 0.66; depth: 0.87; width: 0.16" id="Bureaupoot2"></a-box>
+        <a-box data-brackets-id="2470" position="-1.01315 0.64657 -1.00348" rotation="1.439842939163759 89.72748254866745 -90.24658231105596" color="#4CC3D9" material="color: #412001" geometry="height: 1.31; depth: 1.08; width: 0.11" id="Bureaublad"></a-box>
+        </a-entity>
+        
+        <!--stoel-->
+        <a-entity data-brackets-id="2690" id="stoel" scale="2.5 2.5 2.5" position="3 0 9">
+        <a-box data-brackets-id="2691" position="0.41114 0.4975 -4.08044" rotation="89.32469321869047 0 0" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="depth: 0.4; height: 0.02; width: 0.4" id="leuning"></a-box>
+        <a-box data-brackets-id="2692" position="0.41114 0.2959 -3.92556" rotation="" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="depth: 0.4; height: 0.02; width: 0.4" id="zitvlak"></a-box>
+        <a-box data-brackets-id="2693" position="0.31773 0.15 -3.828" rotation="" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="height: 0.3" id="poot 4"></a-box>
+        <a-box data-brackets-id="2694" position="0.5025 0.15 -3.828" rotation="" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="height: 0.3" id="poot 3"></a-box>
+        <a-box data-brackets-id="2695" position="0.318 0.15 -4.031" rotation="" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="height: 0.3" id="poot 2"></a-box>
+        <a-box data-brackets-id="2696" position="0.50121 0.15 -4.031" rotation="" depth="0.1" height="1" width="0.1" color="#412001" material="" geometry="height: 0.3" id="poot 1"></a-box>
+        </a-entity>
+        
+        <!--schilderij-->
+        <a-image data-brackets-id="3049" src="foto's/schilderij1.png" material="" geometry="" id="schilderij1" scale="1.3 1.3 1.5" position="3.6 2.5 0.18"></a-image>
+        
+        <a-box data-brackets-id="360" position="2.59 2.09184 -9.7198" rotation="0 90 0" color="#4CC3D9" material="color:white" geometry="height: 1.31; depth: 1.08; width: 0.11" id="BORD" scale="0.4 1.5 3"></a-box>
+        
+        <a-image data-brackets-id="484" src="foto's/prikbord1.png" id="prikbord1" material="" geometry="" scale="1 0.6 1" rotation="0 0 -10" position="1.7 2.5 -9.69"></a-image>
+        <a-image data-brackets-id="484" src="foto's/prikbord2.png" id="prikbord2" material="" geometry="" scale="1 0.6 1" rotation="0 0 -10" position="3.2 2.4 -9.69"></a-image>
+        
+    </a-scene>
+  </body>
